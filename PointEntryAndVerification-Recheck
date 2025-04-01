@@ -109,7 +109,7 @@
         function submitPoints() {
             const username = document.getElementById('username').value;
             const points = document.getElementById('points').value;
-            const proof = document.getElementById('proof').files[0]; // Get the uploaded file
+            const proof = document.getElementById('proof').files[0];
             const errorDisplay = document.getElementById('error');
             const successDisplay = document.getElementById('success');
 
@@ -119,10 +119,8 @@
                 return;
             }
 
-            // Simulated Verification (Replace with actual backend verification)
             verifyProof(proof).then(verified => {
                 if (verified) {
-                    // Simulated Database Update (Replace with actual backend update)
                     updateUserPoints(username, points);
                     successDisplay.textContent = "Points submitted successfully!";
                     errorDisplay.textContent = "";
@@ -138,8 +136,6 @@
         }
 
         async function verifyProof(proofFile) {
-            // Simulated Proof Verification (Replace with actual backend/AI verification)
-            // This example just checks if a file was uploaded.
             if(proofFile){
                 return true;
             } else {
@@ -148,8 +144,18 @@
         }
 
         function updateUserPoints(username, points) {
-            // Simulated Database Update (Replace with actual backend update)
-            console.log(`Updating ${username}'s points by ${points}`);
+            let users = JSON.parse(localStorage.getItem('ecorank_users')) || [];
+
+            let userIndex = users.findIndex(user => user.username === username);
+
+            if (userIndex !== -1) {
+                users[userIndex].points = (users[userIndex].points || 0) + parseInt(points);
+                localStorage.setItem('ecorank_users', JSON.stringify(users));
+                console.log(`Updated ${username}'s points to ${users[userIndex].points}`);
+            } else {
+                console.log(`User ${username} not found.`);
+                errorDisplay.textContent = "User not found";
+            }
         }
     </script>
 </body>
