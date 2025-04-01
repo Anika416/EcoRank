@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRank - Submit Points</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #8BC34A, #4CAF50);
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message, .success-message {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .error-message {
+            color: red;
+        }
+        .success-message{
+            color: green;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Submit Points</h2>
+
+        <div id="points-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="points">Points:</label>
+                <input type="number" id="points" name="points">
+            </div>
+            <div class="form-group">
+                <label for="proof">Proof (Image):</label>
+                <input type="file" id="proof" name="proof" accept="image/*">
+            </div>
+            <button onclick="submitPoints()">Submit Points</button>
+            <p id="error" class="error-message"></p>
+            <p id="success" class="success-message"></p>
+        </div>
+    </div>
+
+    <script>
+        function submitPoints() {
+            const username = document.getElementById('username').value;
+            const points = document.getElementById('points').value;
+            const proof = document.getElementById('proof').files[0]; // Get the uploaded file
+            const errorDisplay = document.getElementById('error');
+            const successDisplay = document.getElementById('success');
+
+            if (!username || !points || !proof) {
+                errorDisplay.textContent = "Please fill in all fields.";
+                successDisplay.textContent = "";
+                return;
+            }
+
+            // Simulated Verification (Replace with actual backend verification)
+            verifyProof(proof).then(verified => {
+                if (verified) {
+                    // Simulated Database Update (Replace with actual backend update)
+                    updateUserPoints(username, points);
+                    successDisplay.textContent = "Points submitted successfully!";
+                    errorDisplay.textContent = "";
+                } else {
+                    errorDisplay.textContent = "Proof verification failed.";
+                    successDisplay.textContent = "";
+
+                }
+            }).catch(error => {
+                errorDisplay.textContent = "Error during verification: " + error.message;
+                successDisplay.textContent = "";
+            });
+        }
+
+        async function verifyProof(proofFile) {
+            // Simulated Proof Verification (Replace with actual backend/AI verification)
+            // This example just checks if a file was uploaded.
+            if(proofFile){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function updateUserPoints(username, points) {
+            // Simulated Database Update (Replace with actual backend update)
+            console.log(`Updating ${username}'s points by ${points}`);
+        }
+    </script>
+</body>
+</html>
