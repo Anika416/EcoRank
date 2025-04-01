@@ -132,17 +132,20 @@
         }
 
         function signupForEvent(username, latitude, longitude) {
-            // Simulated Database (Replace with actual backend/database)
-            const users = [];
-            users.push({ username, latitude, longitude });
+            // Simulated Database using localStorage
+            let users = JSON.parse(localStorage.getItem('ecorank_users')) || [];
 
-            // Simulated Group Assignment (Replace with actual logic)
+            users.push({ username, latitude, longitude });
+            localStorage.setItem('ecorank_users', JSON.stringify(users));
+
+            // Simulated Group Assignment
             const groups = ["Carbon Saving", "Recycling", "Energy Saving", "Water Saving"];
-            const groupIndex = Math.floor(Math.random() * 4); // Random group for now.
+            const groupIndex = Math.floor(Math.random() * 4);
 
             resultDisplay.textContent = `Username: ${username}, Group: ${groups[groupIndex]}`;
 
-            //In a real application, you would send user data to a server.
+            // Example of retrieving users:
+            console.log("Current Users:", JSON.parse(localStorage.getItem('ecorank_users')));
         }
     </script>
 
