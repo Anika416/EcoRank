@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRank Event Signup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #8BC34A, #4CAF50);
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>EcoRank Event Signup</h2>
+
+        <div id="signup-form">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <button onclick="checkLocationPermission()">Signup for Event</button>
+            <p id="error" class="error-message"></p>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        function checkLocationPermission() {
+            const username = document.getElementById('username').value;
+            const errorDisplay = document.getElementById('error');
+
+            if (!username) {
+                errorDisplay.textContent = "Please enter a username.";
+                return;
+            }
+
+            if (navigator.permissions && navigator.permissions.query) {
+                navigator.permissions.query({ name: 'geolocation' }).then(function(result) {
+                    if (result.state === 'granted' || result.state === 'prompt') {
+                        getLocationAndSignup(username);
+                    } else {
+                        errorDisplay.textContent = "Location permission denied. Please enable location to signup.";
+                    }
+                });
+            } else {
+                getLocationAndSignup(username); // Fallback for older browsers
+            }
+        }
+
+        function getLocationAndSignup(username) {
+            const errorDisplay = document.getElementById('error');
+            const resultDisplay = document.getElementById('result');
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        signupForEvent(username, latitude, longitude);
+                    },
+                    (error) => {
+                        errorDisplay.textContent = "Unable to get location: " + error.message;
+                    }
+                );
+            } else {
+                errorDisplay.textContent = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function signupForEvent(username, latitude, longitude) {
+            // Simulated Database (Replace with actual backend/database)
+            const users = [];
+            users.push({ username, latitude, longitude });
+
+            // Simulated Group Assignment (Replace with actual logic)
+            const groups = ["Carbon Saving", "Recycling", "Energy Saving", "Water Saving"];
+            const groupIndex = Math.floor(Math.random() * 4); // Random group for now.
+
+            resultDisplay.textContent = `Username: ${username}, Group: ${groups[groupIndex]}`;
+
+            //In a real application, you would send user data to a server.
+        }
+    </script>
+
+</body>
+</html>
