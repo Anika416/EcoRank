@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRank: Our Mission</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #336699;
+        }
+        .mission {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>EcoRank</h1>
+
+    <section class="mission">
+        <h2>Our Mission</h2>
+        <p>At EcoRank, our mission is to empower individuals to understand and improve their environmental impact through friendly competition and actionable insights. We believe that by making conservation visible and rewarding, we can collectively contribute to a more sustainable future for our planet. We strive to:</p>
+        <ul>
+            <li>Raise awareness about key areas of environmental conservation: energy, water, carbon, and electricity.</li>
+            <li>Provide simple and effective tips to help users reduce their consumption in these areas.</li>
+            <li>Foster a sense of community and friendly competition to motivate positive change.</li>
+            <li>Offer a clear and engaging way for users to track their progress and see the impact of their actions.</li>
+            <li>Ultimately, encourage long-term sustainable habits that benefit both individuals and the environment.</li>
+        </ul>
+    </section>
+
+</body>
+</html>
