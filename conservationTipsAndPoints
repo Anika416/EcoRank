@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRank: Conservation Tips</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        h2, h3 {
+            color: #336699;
+        }
+        #point-entry {
+            background-color: #f4f4f4;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        #point-entry label {
+            margin-right: 10px;
+        }
+        #point-entry select,
+        #point-entry input[type="number"],
+        #point-entry button {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        #point-entry button {
+            background-color: #5cb85c;
+            color: white;
+            cursor: pointer;
+        }
+        #point-entry button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h1>EcoRank</h1>
+    <h2>Conservation Tips</h2>
+
+    <div id="point-entry">
+        <label for="action-type">I conserved:</label>
+        <select id="action-type">
+            <option value="">-- Select an Action --</option>
+            <option value="water_shower">Took a shorter shower</option>
+            <option value="water_faucet">Fixed a leaky faucet</option>
+            <option value="water_brushing">Turned off tap while brushing</option>
+            <option value="energy_led">Switched to LED bulb(s)</option>
+            <option value="energy_unplug">Unplugged devices</option>
+            <option value="carbon_bike">Biked instead of driving</option>
+            <option value="carbon_walk">Walked instead of driving</option>
+            <option value="carbon_public_transport">Used public transport</option>
+            <option value="electricity_lights_off">Turned off lights when leaving room</option>
+        </select>
+        <label for="quantity">How many? (if applicable):</label>
+        <input type="number" id="quantity" value="1" min="1">
+        <button onclick="submitConservationAction()">Log Action</button>
+        <p id="submission-message" style="display:none; color: green;">Action logged! Points added.</p>
+    </div>
+
+    <hr>
+
+    <h3>💧 Water Conservation Tips 💧</h3>
+    <ul>
+        <li>Shorten your showers: Aim for 5-minute showers or less. Every minute saved conserves gallons of water.</li>
+        <li>Fix leaky faucets: A dripping faucet can waste a significant amount of water over time. Get those leaks fixed!</li>
+        <li>Turn off the tap while brushing your teeth: Don't let the water run unnecessarily while you're scrubbing.</li>
+        <li>Run full loads in your dishwasher and washing machine: Maximize each cycle to avoid wasting water.</li>
+        <li>Water your lawn efficiently: Water deeply but less frequently, and try to water during the cooler parts of the day to reduce evaporation.</li>
+        <li>Consider a rain barrel: Collect rainwater to water your plants.</li>
+    </ul>
+
+    <h3>💡 Energy Conservation Tips 💡</h3>
+    <ul>
+        <li>Switch to LED light bulbs: LEDs use significantly less energy than traditional incandescent bulbs and last much longer.</li>
+        <li>Unplug electronics when not in use: Many devices continue to draw power even when turned off. Use power strips and switch them off.</li>
+        <li>Use natural light whenever possible: Open curtains and blinds during the day to reduce the need for artificial lighting.</li>
+        <li>Dress appropriately for the weather indoors: Adjust your thermostat a few degrees and wear layers in the winter or lighter clothing in the summer.</li>
+        <li>Seal windows and doors: Prevent drafts to reduce the workload on your heating and cooling systems.</li>
+        <li>Use energy-efficient appliances: When it's time to replace appliances, look for the Energy Star label.</li>
+    </ul>
+
+    <h3>💨 Carbon Conservation Tips 💨</h3>
+    <ul>
+        <li>Walk, bike, or take public transportation: Reduce your reliance on personal vehicles, which are a major source of carbon emissions.</li>
+        <li>Carpool: Share rides with others to reduce the number of cars on the road.</li>
+        <li>Fly less: Air travel has a significant carbon footprint. Consider alternative transportation or longer trips less frequently.</li>
+        <li>Eat less meat: Animal agriculture, especially beef production, contributes significantly to greenhouse gas emissions. Try incorporating more plant-based meals.</li>
+        <li>Buy locally and seasonally: This reduces the emissions associated with transporting food over long distances.</li>
+        <li>Support businesses with sustainable practices: Choose companies that are committed to reducing their carbon footprint.</li>
+    </ul>
+
+    <h3>⚡ Electricity Conservation Tips ⚡</h3>
+    <ul>
+        <li>Turn off lights when you leave a room: This simple habit can make a big difference.</li>
+        <li>Use a smart thermostat: These devices can learn your habits and automatically adjust the temperature to save energy.</li>
+        <li>Air dry clothes when possible: Avoid using the energy-intensive clothes dryer.</li>
+        <li>Charge electronics efficiently: Unplug chargers once your devices are fully charged.</li>
+        <li>Consider renewable energy sources: If feasible, explore options like solar panels for your home.</li>
+        <li>Be mindful of "phantom load": As mentioned in energy conservation, unplug devices that draw power even when off.</li>
+    </ul>
+
+    <hr>
+    <p>Keep track of your progress in the app and see how your conservation efforts are making a positive impact on your EcoRank!</p>
+
+    <script>
+        function submitConservationAction() {
+            const actionType = document.getElementById("action-type").value;
+            const quantity = parseInt(document.getElementById("quantity").value);
+            const
