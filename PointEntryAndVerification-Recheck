@@ -3,160 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoRank - Submit Points</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>EcoRank - Events & Signup</title>
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #8BC34A, #4CAF50);
-            color: #333;
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 500px;
-        }
-
-        h2 {
-            color: #4CAF50;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        input[type="text"],
-        input[type="number"],
-        input[type="file"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        .error-message, .success-message {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .error-message {
-            color: red;
-        }
-        .success-message{
-            color: green;
-        }
-
+        /* Basic styling (add more as needed) */
+        body { font-family: sans-serif; }
+        .form-container { width: 400px; margin: 20px auto; border: 1px solid #ccc; padding: 20px; }
+        .event-container { margin-top: 20px; border: 1px solid #ddd; padding: 10px; }
+        img { max-width: 100%; height: auto; }
     </style>
 </head>
 <body>
 
     <div class="form-container">
-        <h2>Submit Points</h2>
+        <h2>New Member Signup</h2>
+        <form id="newUserForm">
+            <label for="newUsername">Username:</label>
+            <input type="text" id="newUsername" name="newUsername" required><br><br>
+            <button type="submit">Signup</button>
+        </form>
+        <p id="newUserResult"></p>
+    </div>
 
-        <div id="points-form">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
-            </div>
-            <div class="form-group">
-                <label for="points">Points:</label>
-                <input type="number" id="points" name="points">
-            </div>
-            <div class="form-group">
-                <label for="proof">Proof (Image):</label>
-                <input type="file" id="proof" name="proof" accept="image/*">
-            </div>
-            <button onclick="submitPoints()">Submit Points</button>
-            <p id="error" class="error-message"></p>
-            <p id="success" class="success-message"></p>
-        </div>
+    <div class="event-container">
+        <h2>EcoRank Challenge! - Image Tracker</h2>
+        <img src="placeholder-image.jpg" alt="EcoRank Challenge Image">
+        <p>Join our image tracking challenge! Upload images related to sustainability.</p>
+        <button id="imageTrackerSignup">Signup for Image Tracker</button>
+        <p id="imageTrackerResult"></p>
+    </div>
+
+    <div class="event-container">
+        <h2>EcoRank Challenge! - Water Conservation Event</h2>
+        <p>Learn how to save water and earn points.</p>
+        <button id="waterEventSignup">Signup for Water Event</button>
+        <p id="waterEventResult"></p>
+    </div>
+
+    <div class="event-container">
+        <h2>EcoRank Challenge! - Recycling Event</h2>
+        <p>Participate in recycling activities and earn points.</p>
+        <button id="recyclingEventSignup">Signup for Recycling Event</button>
+        <p id="recyclingEventResult"></p>
     </div>
 
     <script>
-        function submitPoints() {
-            const username = document.getElementById('username').value;
-            const points = document.getElementById('points').value;
-            const proof = document.getElementById('proof').files[0];
-            const errorDisplay = document.getElementById('error');
-            const successDisplay = document.getElementById('success');
+        // Simulated GitHub Database (replace with actual GitHub API calls)
+        const users = []; // In a real app, this would be fetched from GitHub
+        const events = {
+            imageTracker: [],
+            waterEvent: [],
+            recyclingEvent: []
+        };
 
-            if (!username || !points || !proof) {
-                errorDisplay.textContent = "Please fill in all fields.";
-                successDisplay.textContent = "";
-                return;
-            }
-
-            verifyProof(proof).then(verified => {
-                if (verified) {
-                    updateUserPoints(username, points);
-                    successDisplay.textContent = "Points submitted successfully!";
-                    errorDisplay.textContent = "";
-                } else {
-                    errorDisplay.textContent = "Proof verification failed.";
-                    successDisplay.textContent = "";
-
-                }
-            }).catch(error => {
-                errorDisplay.textContent = "Error during verification: " + error.message;
-                successDisplay.textContent = "";
-            });
-        }
-
-        async function verifyProof(proofFile) {
-            if(proofFile){
-                return true;
+        // New User Signup
+        document.getElementById('newUserForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('newUsername').value;
+            if (username && !users.includes(username)) {
+                users.push(username);
+                document.getElementById('newUserResult').textContent = `User ${username} signed up!`;
+                // In a real app, push this to GitHub.
             } else {
-                return false;
+                document.getElementById('newUserResult').textContent = 'Username already exists or is invalid.';
             }
-        }
+        });
 
-        function updateUserPoints(username, points) {
-            let users = JSON.parse(localStorage.getItem('ecorank_users')) || [];
-
-            let userIndex = users.findIndex(user => user.username === username);
-
-            if (userIndex !== -1) {
-                users[userIndex].points = (users[userIndex].points || 0) + parseInt(points);
-                localStorage.setItem('ecorank_users', JSON.stringify(users));
-                console.log(`Updated ${username}'s points to ${users[userIndex].points}`);
+        // Event Signups (replace with real backend logic)
+        function handleEventSignup(eventId, resultId) {
+            const username = prompt('Enter your username:');
+            if (username && users.includes(username)) {
+                events[eventId].push(username);
+                const groupNumber = Math.floor(Math.random() * 4) + 1; // Random group 1-4
+                document.getElementById(resultId).textContent = `${username} signed up! Group ${groupNumber}`;
+                // In a real app, push this to GitHub.
             } else {
-                console.log(`User ${username} not found.`);
-                errorDisplay.textContent = "User not found";
+                document.getElementById(resultId).textContent = 'Invalid username or user not found.';
             }
         }
+
+        document.getElementById('imageTrackerSignup').addEventListener('click', () => handleEventSignup('imageTracker', 'imageTrackerResult'));
+        document.getElementById('waterEventSignup').addEventListener('click', () => handleEventSignup('waterEvent', 'waterEventResult'));
+        document.getElementById('recyclingEventSignup').addEventListener('click', () => handleEventSignup('recyclingEvent', 'recyclingEventResult'));
+
     </script>
 </body>
 </html>
