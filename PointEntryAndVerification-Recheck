@@ -1,4 +1,4 @@
-<!DOCTYPE html> //in html
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +10,67 @@
         .form-container { width: 400px; margin: 20px auto; border: 1px solid #ccc; padding: 20px; }
         .event-container { margin-top: 20px; border: 1px solid #ddd; padding: 10px; }
         img { max-width: 100%; height: auto; }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px; /* Adjust spacing as needed */
+        }
+        .dropdown-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+        .dropdown-content a:hover {background-color: #ddd;}
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropdown-button {
+            background-color: #3e8e41;
+        }
+        .dropdown-content a:last-child {
+            border-bottom: none;
+            border-radius-bottom-left: 5px;
+            border-radius-bottom-right: 5px;
+        }
+        .dropdown-content a:first-child {
+            border-radius-top-left: 5px;
+            border-radius-top-right: 5px;
+        }
     </style>
 </head>
 <body>
+
+    <div class="dropdown">
+        <button class="dropdown-button">More Pages</button>
+        <div class="dropdown-content">
+            <a href="home.html">Home Page</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="contact.html">Contact</a>
+            <a href="point_entry.html">Point Entry Page</a>
+            <a href="mission.html">Mission Page</a>
+        </div>
+    </div>
 
     <div class="form-container">
         <h2>New Member Signup</h2>
