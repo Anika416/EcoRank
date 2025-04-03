@@ -5,7 +5,122 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoRank - Events & Signup</title>
   <style>
-  /* ... (Your CSS styles) ... */
+  /* General Styling */
+  body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #495057; /* Dark gray text */
+  line-height: 1.6;
+  }
+ 
+
+  h2 {
+  color: #28a745; /* Forest green heading */
+  border-bottom: 2px solid #28a745;
+  padding-bottom: 8px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  }
+ 
+
+  button {
+  background-color: #007bff; /* Blue button */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+ 
+
+  button:hover {
+  background-color: #0056b3;
+  transform: scale(1.03);
+  }
+ 
+
+  .form-container, .event-container {
+  background-color: #ffffff; /* White container */
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  }
+ 
+
+  .form-container label, .event-signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #545e67;
+  }
+ 
+
+  .form-container input[type="text"], .event-signup-form input[type="text"] {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da; /* Light gray border */
+  border-radius: 4px;
+  font-size: 1em;
+  }
+ 
+
+  #newUserResult, #imageTrackerResult, #waterEventResult, #recyclingEventResult {
+  margin-top: 10px;
+  font-style: italic;
+  color: #6c757d; /* Medium gray italic text */
+  }
+ 
+
+  .error-message {
+  color: #dc3545; /* Red error message */
+  font-size: 0.9em;
+  margin-top: 5px;
+  }
+ 
+
+  /* Navigation Bar */
+  .top-bar {
+  background-color: #343a40; /* Dark charcoal bar */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  }
+ 
+
+  .top-bar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  }
+ 
+
+  .top-bar a:hover {
+  background-color: #555b62;
+  }
+ 
+
+  .location-map {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  }
   </style>
  </head>
  <body>
@@ -16,8 +131,6 @@
   <a href="signup.html" class="active">Sign Up</a>
   <a href="point_entry.html">Log Actions</a>
   <a href="mission.html">Our Mission</a>
-  <a href="leaderboard.html">Leaderboard</a>
-  <a href="profile.html">Profile</a>
   <a href="contact.html">Contact</a>
   </div>
  
@@ -25,6 +138,17 @@
   <div class="form-container">
   <h2>Join EcoRank!</h2>
   <form id="newUserForm">
+  <label for="newUsername">Username:</label>
+  <input type="text" id="newUsername" name="newUsername" placeholder="Choose a username" required><br>
+  <div id="newUsernameError" class="error-message"></div>
+ 
+
+  <label for="newLocation">Your Location:</label>
+  <input type="text" id="newLocation" name="newLocation" placeholder="City, State" required><br>
+  <div id="newLocationError" class="error-message"></div>
+ 
+
+  <button type="submit">Sign Up</button>
   </form>
   <p id="newUserResult"></p>
   </div>
@@ -32,21 +156,156 @@
 
   <div class="event-container">
   <h2>Image Tracker Challenge</h2>
+  <img src="placeholder-map.png" alt="Map of Challenge Locations" class="location-map">
+  <p>Share your sustainability journey with photos from your area!</p>
+  <div class="event-signup-form">
+  <label for="imageTrackerUsername">Your Username:</label>
+  <input type="text" id="imageTrackerUsername" placeholder="Your EcoRank username" required><br>
+  <div id="imageTrackerUsernameError" class="error-message"></div>
+ 
+
+  <label for="imageTrackerLocation">Your Location:</label>
+  <input type="text" id="imageTrackerLocation" placeholder="City, State" required><br>
+  <div id="imageTrackerLocationError" class="error-message"></div>
+ 
+
+  <button onclick="handleEventSignup('imageTracker', 'imageTrackerResult', 'imageTrackerUsername', 'imageTrackerLocation')">Join Challenge</button>
+  <p id="imageTrackerResult"></p>
+  </div>
   </div>
  
 
   <div class="event-container">
   <h2>Water Wise Event</h2>
+  <img src="placeholder-map.png" alt="Map of Event Locations" class="location-map">
+  <p>Tips & tricks to conserve water. Earn points in your community!</p>
+  <div class="event-signup-form">
+  <label for="waterEventUsername">Your Username:</label>
+  <input type="text" id="waterEventUsername" placeholder="Your EcoRank username" required><br>
+  <div id="waterEventUsernameError" class="error-message"></div>
+ 
+
+  <label for="waterEventLocation">Your Location:</label>
+  <input type="text" id="waterEventLocation" placeholder="City, State" required><br>
+  <div id="waterEventLocationError" class="error-message"></div>
+ 
+
+  <button onclick="handleEventSignup('waterEvent', 'waterEventResult', 'waterEventUsername', 'waterEventLocation')">Participate</button>
+  <p id="waterEventResult"></p>
+  </div>
   </div>
  
 
   <div class="event-container">
   <h2>Recycle Mania</h2>
+  <img src="placeholder-map.png" alt="Map of Recycling Locations" class="location-map">
+  <p>Boost your recycling habits and score big in your local area.</p>
+  <div class="event-signup-form">
+  <label for="recyclingEventUsername">Your Username:</label>
+  <input type="text" id="recyclingEventUsername" placeholder="Your EcoRank username" required><br>
+  <div id="recyclingEventUsernameError" class="error-message"></div>
+ 
+
+  <label for="recyclingEventLocation">Your Location:</label>
+  <input type="text" id="recyclingEventLocation" placeholder="City, State" required><br>
+  <div id="recyclingEventLocationError" class="error-message"></div>
+ 
+
+  <button onclick="handleEventSignup('recyclingEvent', 'recyclingEventResult', 'recyclingEventUsername', 'recyclingEventLocation')">Get Involved</button>
+  <p id="recyclingEventResult"></p>
+  </div>
   </div>
  
 
   <script>
-  // ... (Your JavaScript) ...
+  // Simple In-Memory Database (for demonstration)
+  const users = []; // { username: '...', location: '...' }
+  const events = {
+  imageTracker: [], // { username: '...', location: '...' }
+  waterEvent: [],   // { username: '...', location: '...' }
+  recyclingEvent: [] // { username: '...', location: '...' }
+  };
+ 
+
+  // Function to display an error message
+  function displayError(elementId, message) {
+  document.getElementById(elementId).textContent = message;
+  }
+ 
+
+  // Function to clear an error message
+  function clearError(elementId) {
+  document.getElementById(elementId).textContent = '';
+  }
+ 
+
+  // New User Signup
+  document.getElementById('newUserForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const username = document.getElementById('newUsername').value.trim();
+  const location = document.getElementById('newLocation').value.trim();
+  clearError('newUsernameError');
+  clearError('newLocationError');
+ 
+
+  if (!username) {
+  displayError('newUsernameError', 'Please enter a username.');
+  return;
+  }
+  if (!location) {
+  displayError('newLocationError', 'Please enter your location.');
+  return;
+  }
+ 
+
+  if (!users.some(user => user.username === username)) {
+  users.push({ username: username, location: location });
+  document.getElementById('newUserResult').textContent = `Welcome, ${username} from ${location}! You're now an EcoRank member.`;
+  document.getElementById('newUsername').value = '';
+  document.getElementById('newLocation').value = '';
+  } else {
+  document.getElementById('newUserResult').textContent = 'Username already taken.';
+  }
+  });
+ 
+
+  // Event Signups
+  function handleEventSignup(eventId, resultId, usernameId, locationId) {
+  const usernameInput = document.getElementById(usernameId);
+  const locationInput = document.getElementById(locationId);
+  const username = usernameInput.value.trim();
+  const location = locationInput.value.trim();
+  const usernameErrorId = usernameId + 'Error';
+  const locationErrorId = locationId + 'Error';
+  clearError(usernameErrorId);
+  clearError(locationErrorId);
+ 
+
+  if (!username) {
+  displayError(usernameErrorId, 'Please enter your username.');
+  return;
+  }
+  if (!location) {
+  displayError(locationErrorId, 'Please enter your location.');
+  return;
+  }
+ 
+
+  const userExists = users.some(user => user.username === username);
+  const alreadySignedUp = events[eventId].some(entry => entry.username === username);
+ 
+
+  if (userExists && !alreadySignedUp) {
+  events[eventId].push({ username: username, location: location });
+  document.getElementById(resultId).textContent = `${username} from ${location} joined the ${eventId.replace(/([A-Z])/g, ' $1').trim()}!`;
+  usernameInput.value = '';
+  locationInput.value = '';
+  } else if (!userExists) {
+  document.getElementById(resultId).textContent = 'Username not found in EcoRank.';
+  } else if (alreadySignedUp) {
+  document.getElementById(resultId).textContent = `${username} is already signed up for this event.`;
+  }
+  }
   </script>
  </body>
  </html>
