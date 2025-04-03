@@ -1,148 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoRank - Events & Signup</title>
-    <style>
-        /* Basic styling (add more as needed) */
-        body { font-family: sans-serif; }
-        .form-container { width: 400px; margin: 20px auto; border: 1px solid #ccc; padding: 20px; }
-        .event-container { margin-top: 20px; border: 1px solid #ddd; padding: 10px; }
-        img { max-width: 100%; height: auto; }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px; /* Adjust spacing as needed */
-        }
-        .dropdown-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            border-bottom: 1px solid #eee;
-        }
-        .dropdown-content a:hover {background-color: #ddd;}
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown:hover .dropdown-button {
-            background-color: #3e8e41;
-        }
-        .dropdown-content a:last-child {
-            border-bottom: none;
-            border-radius-bottom-left: 5px;
-            border-radius-bottom-right: 5px;
-        }
-        .dropdown-content a:first-child {
-            border-radius-top-left: 5px;
-            border-radius-top-right: 5px;
-        }
-    </style>
-</head>
-<body>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoRank - Events & Signup</title>
+  <style>
+  /* General Styling */
+  body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #e9fae9; /* Light green background */
+  color: #333;
+  line-height: 1.6;
+  }
+ 
 
-    <div class="dropdown">
-        <button class="dropdown-button">More Pages</button>
-        <div class="dropdown-content">
-            <a href="home.html">Home Page</a>
-            <a href="leaderboard.html">Leaderboard</a>
-            <a href="profile.html">Profile</a>
-            <a href="contact.html">Contact</a>
-            <a href="point_entry.html">Point Entry Page</a>
-            <a href="mission.html">Mission Page</a>
-        </div>
-    </div>
+  h2 {
+  color: #2e8b57; /* Forest green */
+  border-bottom: 2px solid #2e8b57;
+  padding-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  }
+ 
 
-    <div class="form-container">
-        <h2>New Member Signup</h2>
-        <form id="newUserForm">
-            <label for="newUsername">Username:</label>
-            <input type="text" id="newUsername" name="newUsername" required><br><br>
-            <button type="submit">Signup</button>
-        </form>
-        <p id="newUserResult"></p>
-    </div>
+  button {
+  background-color: #ff8c00; /* Dark orange */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  }
+ 
 
-    <div class="event-container">
-        <h2>EcoRank Challenge! - Image Tracker</h2>
-        <img src="placeholder-image.jpg" alt="EcoRank Challenge Image">
-        <p>Join our image tracking challenge! Upload images related to sustainability.</p>
-        <button id="imageTrackerSignup">Signup for Image Tracker</button>
-        <p id="imageTrackerResult"></p>
-    </div>
+  button:hover {
+  background-color: #e67700;
+  transform: scale(1.05);
+  }
+ 
 
-    <div class="event-container">
-        <h2>EcoRank Challenge! - Water Conservation Event</h2>
-        <p>Learn how to save water and earn points.</p>
-        <button id="waterEventSignup">Signup for Water Event</button>
-        <p id="waterEventResult"></p>
-    </div>
+  .form-container, .event-container {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  }
+ 
 
-    <div class="event-container">
-        <h2>EcoRank Challenge! - Recycling Event</h2>
-        <p>Participate in recycling activities and earn points.</p>
-        <button id="recyclingEventSignup">Signup for Recycling Event</button>
-        <p id="recyclingEventResult"></p>
-    </div>
+  .form-container label, .event-signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+  }
+ 
 
-    <script>
-        // Simulated GitHub Database (replace with actual GitHub API calls)
-        const users = []; // In a real app, this would be fetched from GitHub
-        const events = {
-            imageTracker: [],
-            waterEvent: [],
-            recyclingEvent: []
-        };
-
-        // New User Signup
-        document.getElementById('newUserForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('newUsername').value;
-            if (username && !users.includes(username)) {
-                users.push(username);
-                document.getElementById('newUserResult').textContent = `User ${username} signed up!`;
-                // In a real app, push this to GitHub.
-            } else {
-                document.getElementById('newUserResult').textContent = 'Username already exists or is invalid.';
-            }
-        });
-
-        // Event Signups (replace with real backend logic)
-        function handleEventSignup(eventId, resultId) {
-            const username = prompt('Enter your username:');
-            if (username && users.includes(username)) {
-                events[eventId].push(username);
-                const groupNumber = Math.floor(Math.random() * 4) + 1; // Random group 1-4
-                document.getElementById(resultId).textContent = `${username} signed up! Group ${groupNumber}`;
-                // In a real app, push this to GitHub.
-            } else {
-                document.getElementById(resultId).textContent = 'Invalid username or user not found.';
-            }
-        }
-
-        document.getElementById('imageTrackerSignup').addEventListener('click', () => handleEventSignup('imageTracker', 'imageTrackerResult'));
-        document.getElementById('waterEventSignup').addEventListener('click', () => handleEventSignup('waterEvent', 'waterEventResult'));
-        document.getElementById('recyclingEventSignup').addEventListener('click', () => handleEventSignup('recyclingEvent', 'recyclingEventResult'));
-
-    </script>
-</body>
-</html>
+  .form-container input[type="text"], .event-signup-form input[type="text"] {
+  width: calc(100% - 12px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border
