@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoRank - Main Page</title>
   <style>
-  /* Trying my aesthetic styling here */
+  /* General Styling */
   body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -61,76 +61,6 @@
   }
  
 
-  /* Dropdown Styling */
-  .dropdown {
-  position: relative;
-  display: inline-block;
-  }
- 
-
-  .dropdown-button {
-  background-color: #343a40; /* Dark charcoal dropdown button */
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  font-size: 1em;
-  }
- 
-
-  .dropdown-button:hover {
-  background-color: #555b62;
-  }
- 
-
-  .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #ffffff; /* White dropdown content */
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 2;
-  border-radius: 5px;
-  margin-top: 5px;
-  left: 0;
-  }
- 
-
-  .dropdown-content a {
-  color: #495057; /* Dark gray dropdown links */
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  border-bottom: 1px solid #e9ecef; /* Light gray divider */
-  transition: background-color 0.3s ease;
-  }
- 
-
-  .dropdown-content a:hover {
-  background-color: #f8f9fa; /* Light gray hover */
-  }
- 
-
-  .dropdown-content a:last-child {
-  border-bottom: none;
-  border-radius-bottom-left: 5px;
-  border-radius-bottom-right: 5px;
-  }
- 
-
-  .dropdown-content a:first-child {
-  border-radius-top-left: 5px;
-  border-radius-top-right: 5px;
-  }
- 
-
-  .dropdown:hover .dropdown-content {
-  display: block;
-  }
- 
-
   /* Main Content Styling */
   main {
   padding: 30px;
@@ -179,4 +109,140 @@
  
 
   main ul li:before {
-  content: "\20
+  content: "\2713"; /* Checkmark */
+  color: #28a745;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.3em;
+  line-height: 1;
+  }
+ 
+
+  main strong {
+  font-weight: bold;
+  color: #007bff; /* Blue for emphasis */
+  }
+ 
+
+  /* Video Styling */
+  .video-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+ 
+
+  .video-container iframe {
+  width: 100%;
+  height: 450px;
+  display: block;
+  }
+ 
+
+  /* Footer Styling */
+  footer {
+  background-color: #343a40; /* Dark charcoal footer */
+  color: #ffffff;
+  text-align: center;
+  padding: 15px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  }
+ 
+
+  /* New Navigation Bar Styling */
+  .top-bar {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px; /* Added some space below the top bar */
+  border-radius: 5px;
+  }
+ 
+
+  .top-bar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  }
+ 
+
+  .top-bar a:hover {
+  background-color: #555b62;
+  }
+  </style>
+ </head>
+ <body>
+ 
+
+  <div class="top-bar">
+  <a href="index.html" class="active">Home</a>
+  <a href="signup.html">Sign Up</a>
+  <a href="point_entry.html">Log Actions</a>
+  <a href="mission.html">Our Mission</a>
+  <a href="leaderboard.html">Leaderboard</a>
+  <a href="profile.html">Profile</a>
+  <a href="contact.html">Contact</a>
+  </div>
+ 
+
+  <header>
+  <h1>EcoRank</h1>
+  <nav>
+  <ul>
+  <li><a href="leaderboard.html">Leaderboard</a></li>
+  <li><a href="profile.html">Profile</a></li>
+  <li><a href="contact.html">Contact</a></li>
+  </ul>
+  </nav>
+  </header>
+ 
+
+  <main>
+  <h2>Welcome to EcoRank!</h2>
+  <p>Join us in making a difference!</p>
+ 
+
+  <div class="video-container">
+  <iframe src="https://www.youtube.com/playlist?list=PL6ixsWuGzeEz_QCkU23tTWdl9tgUYM5qH"
+          title="A Short Film About Nature"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+  </div>
+ 
+
+  <p><strong>How it works:</strong></p>
+  <ul>
+  <li><strong>Crews:</strong> Join a team focused on Carbon, Recycling, Energy, or Water.</li>
+  <li><strong>Challenges:</strong> Earn points in eco-friendly challenges.</li>
+  <li><strong>Track:</strong> Log your sustainable actions.</li>
+  <li><strong>Compete:</strong> Win prizes!</li>
+  </ul>
+ 
+
+  <p><strong>More than just winning:</strong></p>
+  <ul>
+  <li><strong>Learn:</strong> Discover new sustainable habits.</li>
+  <li><strong>Connect:</strong> Build a community.</li>
+  <li><strong>Have Fun!</strong> Celebrate your impact.</li>
+  </ul>
+ 
+
+  <p>Make a difference today!</p>
+  </main>
+ 
+
+  <footer>
+  <p>© 2025 EcoRank. All rights reserved.</p>
+  </footer>
+ </body>
+ </html>
