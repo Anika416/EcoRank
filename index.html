@@ -3,10 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoRank</title>
+    <title>EcoRank - Main Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px; /* Adjust spacing as needed */
+        }
+        .dropdown-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+        .dropdown-content a:hover {background-color: #ddd;}
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown:hover .dropdown-button {
+            background-color: #3e8e41;
+        }
+        .dropdown-content a:last-child {
+            border-bottom: none;
+            border-radius-bottom-left: 5px;
+            border-radius-bottom-right: 5px;
+        }
+        .dropdown-content a:first-child {
+            border-radius-top-left: 5px;
+            border-radius-top-right: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to EcoRank</h1>
-    <p>This is the homepage for the EcoRank project.</p>
+    <header>
+        <h1>EcoRank</h1>
+        <nav>
+            <div class="dropdown">
+                <button class="dropdown-button">More Pages</button>
+                <div class="dropdown-content">
+                    <a href="home.html">Home Page</a>
+                    <a href="signup.html">Signup Page</a>
+                    <a href="point_entry.html">Point Entry Page</a>
+                    <a href="mission.html">Mission Page</a>
+                </div>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Welcome to EcoRank!</h2>
+        <p>EcoRank is an app designed to help you and your community adopt sustainable habits and make a positive impact on the environment. We believe that small changes can make a big difference!</p>
+
+        <p><strong>How it works:</strong></p>
+        <ul>
+            <li><strong>Join a Crew:</strong> After signing up, you'll be placed into a team of like-minded individuals. Each team focuses on a specific area of sustainability: Carbon Reduction, Recycling, Energy Conservation, or Water Conservation.</li>
+            <li><strong>Complete Challenges:</strong> Participate in a variety of eco-friendly challenges tailored to your crew's focus. Earn points for completing each challenge.</li>
+            <li><strong>Log Your Activities:</strong> Track your daily sustainable actions, such as reducing water usage, recycling diligently, or using public transportation.</li>
+            <li><strong>Compete and Win:</strong> At the end of each month, the crew with the highest combined points wins exciting prizes from our sponsors!</li>
+        </ul>
+
+        <p><strong>EcoRank is about more than just winning. It's about:</strong></p>
+        <ul>
+            <li><strong>Learning and Growing:</strong> Discover new ways to be sustainable and improve your environmental impact.</li>
+            <li><strong>Connecting with Others:</strong> Meet people who share your passion for sustainability and build a community.</li>
+            <li><strong>Having Fun!</strong> Engage in friendly competition and celebrate your achievements.</li>
+        </ul>
+
+        <p>Ready to make a difference? Join EcoRank today!</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 EcoRank. All rights reserved.</p>
+    </footer>
 </body>
 </html>
