@@ -135,8 +135,10 @@
 
   .video-container iframe {
   width: 100%;
-  height: 450px;
+  height: auto; /* Changed height to auto for responsiveness */
+  aspect-ratio: 560 / 315; /* Maintain aspect ratio */
   display: block;
+  border: 0; /* Ensure no default iframe border */
   }
  
 
@@ -208,11 +210,7 @@
  
 
   <div class="video-container">
-  <iframe src="<iframe width="560" height="315" src="https://www.youtube.com/embed/iq8ynPmD4i8?si=YXbcGf_sFcMRI6A2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>"
-          title="A Short Film About Nature"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+  <iframe width="560" height="315" src="https://www.youtube.com/playlist?list=PLygtqCC-x839tGJ57MzIS_qxuXYZRy1gG2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
  
 
