@@ -5,7 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EcoRank: Our Mission</title>
   <style>
-  /* ... (Your CSS styles) ... */
+  /* General Styling */
+  body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #495057; /* Dark gray text */
+  line-height: 1.6;
+  }
+ 
+
+  h1, h2 {
+  color: #28a745; /* Forest green heading */
+  }
+ 
+
+  /* Navigation Bar */
+  .top-bar {
+  background-color: #343a40; /* Dark charcoal bar */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  }
+ 
+
+  .top-bar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  }
+ 
+
+  .top-bar a:hover {
+  background-color: #555b62;
+  }
+ 
+
+  .mission {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #ffffff; /* White mission area */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  }
+ 
+
+  .mission h2 {
+  border-bottom: 2px solid #28a745;
+  padding-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.8em;
+  }
+ 
+
+  .mission p {
+  margin-bottom: 15px;
+  color: #545e67;
+  }
+ 
+
+  .mission ul {
+  list-style: none;
+  padding-left: 20px;
+  }
+ 
+
+  .mission ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  color: #545e67;
+  }
+ 
+
+  .mission ul li:before {
+  content: "\2713"; /* Checkmark */
+  color: #28a745;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  }
   </style>
  </head>
  <body>
@@ -16,17 +104,20 @@
   <a href="signup.html">Sign Up</a>
   <a href="point_entry.html">Log Actions</a>
   <a href="mission.html" class="active">Our Mission</a>
-  <a href="leaderboard.html">Leaderboard</a>
-  <a href="profile.html">Profile</a>
   <a href="contact.html">Contact</a>
   </div>
  
 
   <section class="mission">
   <h2>Our Mission</h2>
-  <p>...</p>
+  <p>Empower individuals to understand and improve their environmental impact through friendly competition and actionable insights. We aim to make conservation visible and rewarding, contributing to a sustainable future.</p>
+  <p>We strive to:</p>
   <ul>
-  <li>...</li>
+  <li>Raise awareness about energy, water, carbon, and electricity conservation.</li>
+  <li>Provide simple tips to reduce consumption.</li>
+  <li>Foster community and friendly competition.</li>
+  <li>Offer clear progress tracking.</li>
+  <li>Encourage long-term sustainable habits.</li>
   </ul>
   </section>
  
